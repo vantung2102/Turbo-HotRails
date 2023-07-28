@@ -1,0 +1,12 @@
+<main class="container">
+  <%= turbo_frame_tag "first_turbo_frame" do %>
+    <div class="header">
+      <h1>Posts</h1>
+      <%= link_to "New post", new_post_path, data: { turbo_frame: "second_frame" }, class: "btn btn--primary" %>
+    </div>
+  <% end %>
+
+  <%= turbo_frame_tag "second_turbo_frame" do %>
+    <%= render @posts %>
+  <% end %>
+</main>

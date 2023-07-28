@@ -1,0 +1,19 @@
+<%= simple_form_for post, html: { class: "post form" }, data: { turbo: false } do |f| %>
+  <% if post.errors.any? %>
+    <div class="error-message">
+      <%= post.errors.full_messages.to_sentence.capitalize %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :title, style: "display: block" %>
+    <%= f.text_field :title, input_html: { autofocus: true } %>
+  </div>
+
+  <div>
+    <%= f.label :content, style: "display: block" %>
+    <%= f.text_area :content, input_html: { autofocus: true } %>
+  </div>
+
+  <%= f.submit class: "btn btn--secondary" %>
+<% end %>

@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "quote_#{quote.id}" do %>
+  <div class="post">
+    <%= link_to post.title, post_path(post) %>
+    <div>
+      <%= post.content %>
+    </div>
+
+    <div class="post__actions">
+      <%= button_to "Delete", post_path(post), method: :delete, class: "btn btn--light" %>
+      <%= link_to "Edit", edit_post_path(post), class: "btn btn--light" %>
+    </div>
+  </div>
+<% end %>
