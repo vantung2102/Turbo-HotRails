@@ -8,16 +8,16 @@
 
 puts '----- Processing create new User -----'
   5.times do
-    User.create!(name: Faker.name, email: Faker::Internet.email)
+    User.create!(name: Faker::Name.name , email: Faker::Internet.email)
   end
 puts '----- Done create new User -----'
 
 puts '----- Processing create new Post -----'
   User.all.each do |user|
-    5.times do
+    2.times do
       user.posts.create!(
-        title: Faker::Lorem.sentence(word_count: 3),
-        content: Faker::Lorem.paragraphs
+        title: Faker::Lorem.sentence(word_count: 2),
+        content: Faker::Lorem.sentence(word_count: 3)
       )
     end
   end
@@ -25,7 +25,7 @@ puts '----- Done create new Post -----'
 
 puts '----- Processing create new Comment -----'
   Post.all.each do |post|
-    5.times do
+    2.times do
       post.comments.create!(
         user_id: rand(1..5),
         content: Faker::Lorem.paragraphs
@@ -36,7 +36,7 @@ puts '----- Done create new Comment -----'
 
 puts '----- Processing create new Like -----'
   Post.all.each do |post|
-    5.times do
+    2.times do
       Like.create!(
         user_id: rand(1..5),
         like_type: 'Post',
