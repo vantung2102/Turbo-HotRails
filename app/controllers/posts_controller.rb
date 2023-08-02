@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   def index
-    @posts = Post.order(id: :desc)
+    @posts = Post.order(id: :desc).limit(5)
+    # @posts = Post.includes(:comments => :user).order(id: :desc).limit(5)
   end
 
   def show; end
@@ -14,7 +15,7 @@ class PostsController < ApplicationController
   def edit; end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(user_id: 1))
     if @post.save
       respond_to do |format|
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }

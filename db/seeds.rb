@@ -28,7 +28,7 @@ puts '----- Processing create new Comment -----'
     2.times do
       post.comments.create!(
         user_id: rand(1..5),
-        content: Faker::Lorem.paragraphs
+        content: Faker::Lorem.sentence(word_count: 3)
       )
     end
   end
